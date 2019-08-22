@@ -1,0 +1,34 @@
+<!--Con la interpolacion  y colocando dentro el nombre del atributo de ts obtenemos el contenido-->
+<!--<p>Hola {{name}}</p>-->
+
+<!--Accedemos a las PROPIEDADES con los corchetes para obtener el contenido de las variables en ts-->
+<!--<img [src]="src"   [width]="width" [height]="300">-->
+
+<div>
+  <form *ngIf="enviar==true;else div2" >
+  <!--Los  [(ngModel)] son atributos de manera bidireccional que podremos acceder desde ts
+  si lo modificamos en ts se modifica en html y asi si modificamos desde html se modifica en ts-->
+
+  Nombre:<input type="text" id="nombre" name="nombre" [(ngModel)]="nombre"><br>
+  Email:<input type="text" id="apellido" name="apellido" [(ngModel)]="email"><br>
+
+  <button (click)="manejadora()">Enviar</button><br><br>
+
+  </form>
+</div>
+<!-- Primera forma sin utilizar "else"
+<div *ngIf="enviar==false">
+
+    <p>Hola {{nombre}}</p>
+    <p>Su email es {{email}}</p>
+
+    <button (click)="manejadora()">Cargar</button><br><br>
+</div>-->
+
+<!--Forma utilizando el "else"-->
+<ng-template #div2>
+    <p>Hola {{nombre}}</p>
+    <p>Su email es {{email}}</p>
+
+    <button (click)="manejadora()">Cargar</button><br><br>
+</ng-template>

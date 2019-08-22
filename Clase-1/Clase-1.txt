@@ -1,0 +1,34 @@
+
+
+Abrimos cmd , y ejecutamos este comando el cual es un complemento para node:
+  
+  npm i -g @angular/cli
+
+Abrimos otra cmd y escribimos el siguiente comando y tiene que ser mayor a la versiona "8"
+
+  node -v 
+
+Con el siguiente comando vemos la version que tenemos instalada:
+
+ ng v
+
+
+
+
+Angular es un framework que se basa en componentes y desarrollado para frontend y soportar paginas de mucha exigencia
+Primer version de angular era angular JS y trabajaba con DIRECTIVAS las cuales son crear etiquetas HTML NUEVAS ,
+Se iba a adoptar como nativa en html etiquetas propias y lo hicieron bajo web component , podemos hacer neuvas etiquetas
+que se llaman COMPONENTES , a raiz de eso todos los nuevos FRAMEWORKS trabajn en base a los COMPONENTES (etiquetas propias).
+
+*Las etiquetas "CUSTOMIZADAS" deben tener un "-"(guion) en el medio para no confundirse con las nativas
+
+Realt es una libreria , Angular es un framework , una libreria es un archivo con codigo que vamos autilizar en cualquier
+lugar de nuestro programa , la estructura de programa la hacemos nosotros e incluimos libreria.
+Un framework nos dice como tenemos que programar y donde ubicar todo , el framework nos obliga a programar como es tal.
+
+Este angular nos ofrece el CLI la cual es una consola que nos va a ayudar a crear por ejemplo un proyecto.
+
+1- ng new clase1   (esto nos crea un proyecto y nos pregunta si queremos agregar modulo de ruteo y le ponemos que NO)
+
+
+"npm start"   o  "ng serve" levantamos el server
