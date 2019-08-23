@@ -10,8 +10,8 @@ export class SaludarComponent implements OnInit {
   // este atributo desde html lo accedemos con "interpolacion {{}}"
  name = 'Ema';
 
- //estos dos atributos estan declarados tambien en html de manera bidireccional los cuales se van
- //a refrescar automaticamente
+ // estos dos atributos estan declarados tambien en html de manera bidireccional los cuales se van
+ // a refrescar automaticamente
  nombre = ' ';
  email = ' ' ;
  enviar =true;
