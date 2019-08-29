@@ -1,0 +1,13 @@
+
+  <form >
+  <!--Los  [(ngModel)] son atributos de manera bidireccional que podremos acceder desde ts
+  si lo modificamos en ts se modifica en html y asi si modificamos desde html se modifica en ts-->
+
+ Nombre: <input type="text" id="nombre" name="nombre"  [(ngModel)]="nombre"><br>
+
+  Email:<input type="text" id="apellido" name="apellido" [(ngModel)]="email"><br>
+
+  <button (click)="ngCargar()">Enviar</button><br><br>
+
+  </form>
+
