@@ -5,6 +5,12 @@
 <!--<img [src]="src"   [width]="width" [height]="300">-->
 
 
+<!--El (cargar) vendria a ser el nombre del "@Output" que enviamos desde "form.ts" y el "ngProcesarCarga($event)" va a ser el metodo
+    por el cual vamos a poder acceder a lo que nos envio el form desde nuestro "saludar.ts"
+-->
 <app-form (cargar)="ngProcesarCarga($event)"></app-form>
-<app-datos [datos]="listado"></app-datos>
 
+<!--En el [listado] va a ser nuestro "@Input" desde "datos.ts" (claseHija) al cual le vamos a enviar datos
+    desde la clase padre , y el "Listado" donde vamos a guardar lo que queremos enviar a datos desde nuestro "saludar.ts" 
+    en este caso seria un array de objetos-->
+<app-datos [datos]="listado"></app-datos>

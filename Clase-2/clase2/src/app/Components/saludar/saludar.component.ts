@@ -11,22 +11,25 @@ import { Persona } from 'src/app/clases/persona';
 export class SaludarComponent implements OnInit {
 
    listado = [];
-   // persona = new Persona("h","b");
-   persona: Persona;
+
+   // persona: Persona;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  // En la variable "datos" vamos a recibir lo que nos envio el "Output" desde "form.ts" (claseHija) 
+  // en este caso eso seria un objeto de tipo persona
   ngProcesarCarga(datos: Persona) {
-    // this.persona = new Persona(datos.nombre, datos.email);
+    /* v1 Creamos un atributo propio de tipo "Persona" y luego se lo asignamos a la variable datos
     this.persona = datos;
+    this.listado.push(this.persona);*/
 
-    console.log(this.persona);
+    /*v2 Directamente nuestro atributo "datos" se lo asignamos al array ya que "datos" viene asignado como persona desde la funcion*/
+    this.listado.push(datos);
+    console.log(this.listado);
 
-    this.listado.push(this.persona);
-    // console.log(this.listado);
   }
 
 

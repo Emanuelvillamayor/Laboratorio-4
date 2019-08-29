@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
   persona: Persona;
 
 
-
+  // creo el ouput el cual emite un evento hacia una clase padre
   @Output() cargar = new EventEmitter<any>();
   constructor() { }
 
@@ -26,10 +26,12 @@ export class FormComponent implements OnInit {
   }
 
   ngCargar() {
+    // instancia un objeto "Persona" cargandole los datos ingresados por los "inputs"
     this.persona = new Persona(this.nombre, this.email);
 
     console.log(this.persona);
 
+    // envio  ese evento hacia mi clase padre el cual lo va a recibir con una funcion desde el lado de "saludar.ts"
     this.cargar.emit(this.persona);
   }
 
