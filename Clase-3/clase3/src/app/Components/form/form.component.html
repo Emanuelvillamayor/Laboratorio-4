@@ -1,0 +1,32 @@
+
+  <form >
+  <!--Los  [(ngModel)] son atributos de manera bidireccional que podremos acceder desde ts
+  si lo modificamos en ts se modifica en html y asi si modificamos desde html se modifica en ts-->
+
+Nombre: <input type="text" id="nombre" name="nombre"  [(ngModel)]="nombre"><br>
+
+Email:<input type="email" id="apellido" name="apellido" [(ngModel)]="email"><br>
+
+Sexo:<select [(ngModel)]="opcionSexo" name="opcionSexo" (change)="ngCapturar( $event )">
+    <option selected="true" disabled="disabled">seleccione el sexo</option>
+    <option value="F">F</option>
+    <option value="M">M</option>
+    <option value="O">O</option>
+</select><br>
+
+Sueldo:<input type="number" id="sueldo" name="sueldo" [(ngModel)]="sueldo"><br>
+
+Edad:<input type="number" id="edad" name="edad" [(ngModel)]="edad"><br>
+
+Licencia:<select [(ngModel)]="opcionLic" name="opcionLic" (change)="ngCapturar( $event )">
+    <option selected="true" disabled="disabled">seleccione una opcion</option>
+    <option value="Si">Si</option>
+    <option value="No">No</option>
+</select><br>
+
+Fecha: <input type="date" name="fecha" id="fecha" [(ngModel)]="fecha" value="2018-09-22"><br><br>
+
+  <button (click)="ngCargar()">Enviar</button><br>
+
+  </form>
+
