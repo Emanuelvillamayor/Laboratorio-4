@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Persona } from 'src/app/clases/persona';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,13 @@ export class UserService {
 
   constructor() { }
 
-  public ngGetListado()
-  {
+  public ngGetListado() {
      return this.listado;
   }
 
-  public ngSetListado( dato: Persona ){
+  public ngSetListado( dato: Persona ) {
     this.listado.push(dato);
   }
+
+
 }

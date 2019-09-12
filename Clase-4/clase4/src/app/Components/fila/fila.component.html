@@ -3,6 +3,8 @@
 <td>{{item.sexo | sexo}}</td>
 <td>{{item.sueldo | currency}}</td>
 <td>{{item.edad}}</td>
-<td>{{item.licencia | licencia}}</td>
+<!--<td>{{item.licencia | licencia}}</td>-->
+<td [innerHTML]="item.licencia | licencia"></td>
 <td>{{item.fecha | date}}</td>
+
 

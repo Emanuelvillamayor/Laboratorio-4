@@ -1,0 +1,22 @@
+<!-- <button (click)="ngCargarLista()">Mostrar paises</button> -->
+<button (click)="ngCargarLista()" mat-flat-button color="primary">Mostrar Paises</button>
+<div *ngIf="mostrarLista ==true">
+  <table class="egt" border=3>
+      <thead>
+        <th>Pais</th>
+        <th>Capital</th>
+        <th>Region</th>
+        <th>Poblacion</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of arrayPaises" >
+          <td>{{item.name}}</td>
+          <td>{{item.capital}}</td>
+          <td>{{item.region}}</td>
+          <td>{{item.population}}</td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+

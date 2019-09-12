@@ -12,6 +12,7 @@ import { UserService } from '../../services/user.service'; // importamos el serv
 export class DatosComponent implements OnInit {
 
 
+
   @Input() mostrar: boolean;
 
   // obtengo el listado de nuestro servicio que anteriormente cargamos desde "saludar.ts"
@@ -20,6 +21,7 @@ export class DatosComponent implements OnInit {
   constructor( private user: UserService) { }
 
   ngOnInit() {
+
   }
 
 

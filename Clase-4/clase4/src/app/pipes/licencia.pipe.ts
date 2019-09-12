@@ -7,10 +7,12 @@ export class LicenciaPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     if (value === 'Si') {
-      return `<span color="red">${value}</span>`;
+      value = value.replace(value, '<font color = "green">SI</font>');
     } else {
-      return `<span color="blue">${value}</span>`;
+      value = value.replace(value, '<font color = "red">NO</font>');
     }
+
+    return value;
   }
 
 }

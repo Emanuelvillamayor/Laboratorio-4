@@ -13,6 +13,14 @@ import { SexoPipe } from './pipes/sexo.pipe';
 
 // importamos el SERVICIO  a mano
 import { UserService } from './services/user.service';
+
+import {HttpClientModule} from '@angular/common/http'; // conexiones http importamos a mano
+import { PaisesComponent } from './Components/paises/paises.component';
+import { PaisService } from './services/pais.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// material
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +29,18 @@ import { UserService } from './services/user.service';
     DatosComponent,
     FilaComponent,
     LicenciaPipe,
-    SexoPipe
+    SexoPipe,
+    PaisesComponent,
+
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+      FormsModule,
+      BrowserModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      MatButtonModule
   ],
-  providers: [ UserService], // los servicios van dentro de los "providers"
+  providers: [ UserService, PaisService], // los servicios van dentro de los "providers"
   bootstrap: [AppComponent]
 })
 export class AppModule { }
