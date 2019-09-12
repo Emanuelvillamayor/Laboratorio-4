@@ -1,4 +1,4 @@
-<!--<div *ngIf="mostrar">
+<div *ngIf="mostrar">
     <table class="egt" border=3>
         <thead>
             <th>Nombres</th>
@@ -9,18 +9,18 @@
             <th>Licencia</th>
             <th>Fecha</th>
         </thead>
-        <tbody>-->
+        <tbody>
             <!--[item]=item ya que a "fila" le voy a pasar el item especifico y no todo el array como "datos"-->
-            <!-- <tr *ngFor="let item of listado" app-fila [item]="item"> -->
+            <tr *ngFor="let item of listado" app-fila [item]="item">
                 <!--<td>{{item.nombre}}</td>
-    <td>{{item.email}}</td>-->
-           <!-- </tr>
+                <td>{{item.email}}</td>-->
+            </tr>
         </tbody>
     </table>
-</div>-->
+</div>
 
-<div *ngIf="mostrar">
+<!-- <div *ngIf="mostrar">
 <table mat-table [dataSource]="listado">
 
   </table>
-</div>
+</div> -->
