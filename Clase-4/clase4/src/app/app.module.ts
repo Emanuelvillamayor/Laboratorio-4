@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // material
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {MatButtonModule} from '@angular/material/button';
       BrowserModule,
       HttpClientModule,
       BrowserAnimationsModule,
-      MatButtonModule
+      MatButtonModule,
+      MatTableModule
   ],
   providers: [ UserService, PaisService], // los servicios van dentro de los "providers"
   bootstrap: [AppComponent]
