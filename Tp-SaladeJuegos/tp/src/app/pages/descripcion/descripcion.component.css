@@ -1,0 +1,6 @@
+.slider {
+    background: url("../../../assets/imagenes/section1.png");
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+}

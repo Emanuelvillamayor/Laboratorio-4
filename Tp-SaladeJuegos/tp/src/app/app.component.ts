@@ -31,7 +31,7 @@ export class AppComponent {
 
   OnSubmitLogin() {
     this.authService.login(this.email, this.password).then(res => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/inicio']);
     // }).catch(err => alert('Los datos son incorrectos o no existe el usuario') );
   }).catch(err => this.ngValidarError(err.code));
   }

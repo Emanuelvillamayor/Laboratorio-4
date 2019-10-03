@@ -9,6 +9,13 @@
     background-size: cover;
 }
 
+
+/* .body-login {
+    font-family: 'Roboto', sans-serif;
+    background: url(assets/imagenes/fondo.gif) no-repeat center center fixed;
+    background-size: cover;
+}
+
 .main-section {
     margin: 0 auto;
     margin-top: 250px;
@@ -86,4 +93,6 @@
     background-color: black;
     color: white;
     text-align: center;
-}
+} */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

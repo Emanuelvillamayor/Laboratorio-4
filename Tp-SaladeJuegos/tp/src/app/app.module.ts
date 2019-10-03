@@ -14,6 +14,13 @@ import { AngularFireModule} from '@angular/fire';
 // modulo de autenticacion de angular
 import { AngularFireAuthModule} from '@angular/fire/auth';
 
+// importo modulo que contiene las demas paginas
+import { PagesModule } from './pages/pages.module';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +29,11 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule
+    PagesModule,
+    MatGridListModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
