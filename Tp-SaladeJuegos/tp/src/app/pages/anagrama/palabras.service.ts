@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { PalabraModel } from '../../models/palabra.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PalabrasService {
 
-  public listado = [
+  public listado:PalabraModel[] =  [
     {nombre: 'pedro', anagrama: 'poder'},
     {nombre: 'marta', anagrama: 'matar'},
     {nombre: 'teresa', anagrama: 'aretes'},
