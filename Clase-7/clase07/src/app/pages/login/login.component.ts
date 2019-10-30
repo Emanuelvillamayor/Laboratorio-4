@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   email;
   nombre;
 
+
+
   constructor(private userService:  UserService, public router: Router) { }
 
   ngOnInit() {
@@ -30,7 +32,20 @@ export class LoginComponent implements OnInit {
 
   loginPost() {
     this.userService.login().subscribe( arg => {
-     // this.ser
-    })
+     console.log(arg);
+
+     // si el usuario es correcto, guardo en el localstorage el TOKEN que me retorna el metodo login
+     this.userService.setToken(arg['token']);
+    }
+    , e =>{console.log(e)});
   }
+
+  registerPost() {
+    this.userService.register().subscribe( arg => {
+      console.log(arg);
+    }
+    , e => {console.log(e)});
+  }
+
+
 }
