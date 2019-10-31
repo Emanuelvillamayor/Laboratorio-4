@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      // verifico que exista un token registrado para acceder al home
+      // verifico que exista un token registrado para acceder al home, sino reedirige a la pagina "error"
       if (this.userService.getToken() != null) {
 
        return true;

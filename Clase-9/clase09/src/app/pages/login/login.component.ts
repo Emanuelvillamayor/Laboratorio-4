@@ -22,26 +22,23 @@ export class LoginComponent implements OnInit {
     // voy al metodo que carga el objeto user del servicio
     this.userService.setUser(this.email, this.password);
 
+  
     this.loginPost();
-
-    // me redirijo hacia el home el cual ya va a tener un GUARD que valide que el usuario sea corrector
-   // this.router.navigate(['home']);
-
-  //  console.log(this.userService.isAuthenticated());
   }
 
-  enviar() {
-    this.router.navigate(['home']);
-  }
-
+    // mando los datos al servicio para validar que el usuario este logueado
+    // si esta logueado , al recibir el token  lo guardo en  el localstorage
+    // si no esta logueado muestro msj de error
   loginPost() {
     this.userService.login().subscribe( arg => {
-      if(arg['token'] != null) {
+      if (arg['token'] != null) {
         this.userService.setToken(arg[ 'token' ]);
+        // console.log(arg);
 
-        this.userService.getToken();
+        // si existe el token , nos dirije al home
+        this.router.navigate(['home']);
       }
-      console.log(arg);
+      
     }, e => { console.log(e); } );
   }
 }

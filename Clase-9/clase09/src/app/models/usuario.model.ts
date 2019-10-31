@@ -9,4 +9,9 @@ export class UsuarioModel {
   type: string;
   img: string;
 
+  getJson() {
+   const cliente = {cliente: {user: this.email, pass: this.pass}};
+   return cliente;
+  }
+
 }
