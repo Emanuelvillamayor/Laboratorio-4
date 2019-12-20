@@ -1,0 +1,26 @@
+<div class="col-12">
+  <button class = "btn btn-primary btn-lg btn-block" (click) = "pedirTurno()" style = "margin-top: 2%;">Registrar y ver turnos</button>
+</div>
+<br><br>
+<div class="row" *ngIf = "pedirT">
+    <div class="col-1"></div>
+    <div class = col-sm style="align-content: center;">
+       <label>Seleccione un fecha (recuerde que los domingos la clinica, La Buena sonrisa, no atiende)</label>
+       <input type = "date" [min]="fechaInicial" [max] = "fechaFinal"   class="form-control" (change) = "verificarFecha()"  [(ngModel)]  = "objTurno.fecha">
+       <label>Seleccione un horario</label>
+       <input type="time" (change) = "verificarFecha()" [min]="horarioInicio" [max]="horarioFin" class="form-control" step="900"  [(ngModel)]  = "objTurno.horario">
+       <label>Especialistas disponibles</label>
+       <select class="custom-select"  name = "especialistas" [(ngModel)] = "espSelect">
+         <option selected disabled value="">Seleccione un especialista</option>
+         <option [value] = "item.correo" *ngFor = "let item of especialistasDisp">{{item.nombre}} {{item.apellido}}</option>
+       </select>
+       <br><br>
+       <button class="btn btn-success" (click) = "registrarTurno()" *ngIf = "mostrarBoton" [disabled] = "disabled">Registrar Turno</button>
+       <div class="alert alert-warning" role="alert" *ngIf = "mostrarMsj">{{msj}}</div>
+    </div>
+    <div class="col-1"></div>
+    <div class = "col-sm">
+      <app-mis-turnos></app-mis-turnos>
+    </div>
+    <div class="col-1"></div>
+</div>

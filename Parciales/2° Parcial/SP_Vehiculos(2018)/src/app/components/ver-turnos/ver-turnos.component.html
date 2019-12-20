@@ -1,0 +1,30 @@
+<div class="input">
+    <div id="content" #content class="midle">
+    <table class="input" matSort (matSortChange)="sortData($event)">
+        <tr>
+            <th mat-sort-header="dia">Dia</th>
+            <th mat-sort-header="hora">Hora</th>
+            <th mat-sort-header="patente">Patente</th>
+            <th mat-sort-header="mail">Mail</th>
+        </tr>
+        
+        <tr *ngFor="let dessert of mostrarArr">
+            <td>{{dessert.dia}}</td>
+            <td>{{dessert.hora}}</td>
+            <td>{{dessert.patente}}</td>
+            <td>{{dessert.mail}} </td>
+        </tr>
+    </table>
+</div>
+<div class="midle">
+<div *ngIf="!tipo" class="input">
+        <div class="example-button-row">
+            <mat-form-field style="width:50%">
+                <input type="text"  matInput placeholder="Mail buscar" name="mail" [(ngModel)]="mailbuscar" required>
+            </mat-form-field>
+            <button (click)="Filtrar()" class="boton" mat-raised-button style="width: 50%; background-color:#70f6af;color:black">Buscar</button>
+            <button (click)="downloadPDF()" class="boton" mat-raised-button style="width: 100%; background-color: crimson;color:black">Generar PDF</button>
+        </div>
+    </div>
+</div>
+</div>

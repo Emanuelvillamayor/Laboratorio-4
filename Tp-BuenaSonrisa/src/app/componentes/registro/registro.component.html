@@ -1,0 +1,52 @@
+<app-cabecera></app-cabecera>
+<div class = "modal-dialog text center">
+    <div class = "col-sm-12 main-section">
+        <div class="modal-content">
+           <div class="col-sm-12 user-img">
+              <img [src] = "entidad.foto" class="img-redonda">
+           </div>
+           <div class = "col-12 form-input">
+             <form>
+                 <div class="row">
+                    <div class="form-group col-6">
+                        <i class="fas fa-user" style=" position: absolute;margin-top: 4.5%;font-size : 120%;left:14%"></i>
+                        <input type = "text" class = "form-control" name = "nombre" placeholder="Ingrese nombre" [(ngModel)] = "entidad.nombre">
+                    </div>
+                    <div class="form-group col-6">
+                        <i class="fas fa-user" style=" position: absolute;margin-top: 4.5%;font-size : 120%;left:14%"></i>
+                        <input type = "text" class = "form-control" name = "apellido" placeholder="Ingrese apellido" [(ngModel)] = "entidad.apellido">
+                    </div>
+                 </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type = "email" class = "form-control" name = "correo" placeholder="Ingrese un correo electrónico" [(ngModel)] = "entidad.correo">
+                 </div>
+                 <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input [type] = "tipo" class = "form-control" name = "clave" placeholder="Ingrese una contraseña"  [(ngModel)] = "entidad.clave">
+                    <span class = "fas fa-eye" (mouseover) = "clave('text')" (mouseout) = "clave('password')"></span>
+                </div>
+                <div class="form-group" >
+                    <select class="custom-select" name="perfil" [(ngModel)] = "entidad.perfil">
+                        <option selected value="admin">Administrador</option>
+                        <option value = "cliente">Cliente</option>
+                        <option value="especialista">Especialista</option>
+                        <option value="recepcionista">Recepcionista</option>
+                    </select> 
+                </div>
+                <div class="btn btn-success btn-sm float-left">
+                   <input id = "myFile" type="file" style="width: 80%;" accept="image/.jpg" (change) = "actualizarFoto($event)" > 
+                </div>
+                <div class="form-group" style="margin-top:18%">
+                    <app-mi-captcha (verificar) = verificar($event)></app-mi-captcha>
+                </div>
+                <div *ngIf = "!mostrarBoton" class="form-group" style="margin-top: -23%;">
+                   <img src = "../../../assets/loading.gif" width="70" height="70" class="centrarSpinner">
+                </div>
+                <button style="margin-top: -2%;" *ngIf = "!mostrarMsj && mostrarBoton" class="btn" type = "submit" [disabled] = "disabled" (click) = "registrar()" >Registrar entidad</button>
+                <label *ngIf = "mostrarMsj" class="alert alert-warning" role="alert">{{msj}}</label> 
+           </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,66 @@
+<div class = "row">
+<div class = "col-sm modal-dialog text center">
+  <div class = " main-section">
+      <div class="modal-content">
+          <div class="text-center">
+              <h1 class="text-white">Registro de autos</h1>
+          </div>
+         <div class = "col-12 form-input">
+           <form>
+               <div class="form-group">
+                  <i class="fas fa-pencil-alt"></i>
+                  <input type = "email" class = "form-control" name = "marca" placeholder="Ingrese marca" [(ngModel)] = "auto.marca">
+               </div>
+               <div class="form-group">
+                      <i class="fas fa-list-ol"></i>
+                  <input type = "text" class = "form-control" name = "modelo" placeholder="Ingrese modelo"  [(ngModel)] = "auto.modelo" >
+              </div>
+              <div  class="form-group">
+                  <select class="custom-select" name="cuatrimestre" [(ngModel)] = "auto.tipo">
+                      <option selected value = "auto">Auto</option>
+                      <option value = "camioneta">Camioneta</option>
+                      <option value = "camion">Camion</option>
+                  </select>
+              </div>
+              <div>
+                <input type = "number" class = "form-control" name = "km" placeholder="KM"  [(ngModel)] = "auto.km" >
+              </div>
+              <br>
+              <div>
+                <input type = "number" class = "form-control" name = "anio" placeholder ="Año"  [(ngModel)] = "auto.anio">
+              </div>
+              <br>
+              <input type = "file" value="Subir foto" (change) = "subirArchivo($event)" style="color: #2ecc71;">
+              <app-mi-captcha (verificar) = verificar($event)></app-mi-captcha>
+              <button type = "submit" class="btn btn-danger" (click) = "agregarAuto()" [disabled] = "disabled">Registrar auto</button>
+           </form>
+         </div>
+      </div>
+  </div>
+</div>
+<div class="col-sm">
+  <table class="table" id = "miTabla">
+    <thead>
+      <tr style = "background-color: #434e5a;color:white">
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>Año</th>
+        <th>Tipo</th>
+        <th>KM</th>
+        <th>Foto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of autos">
+          <td>{{item.modelo}}</td>
+          <td>{{item.marca}}</td>
+          <td>{{item.anio}}</td>
+          <td><img [src] = "item.tipo | cambioImg" width = 70 height= 70></td>
+          <td>{{item.km}}</td>
+          <td><img [src] = "item.foto" width=70 height=70></td>
+      </tr>
+    </tbody>
+  </table>
+  <app-descarga idHtml = "miTabla"></app-descarga>
+  </div>
+  <div>

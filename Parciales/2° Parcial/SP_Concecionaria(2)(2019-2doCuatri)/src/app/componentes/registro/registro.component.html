@@ -1,0 +1,33 @@
+<div class = "modal-dialog text center">
+  <div class = "col-sm-9 main-section">
+      <div class="modal-content">
+         <div class="col-12 user-img">
+            <img src = "https://media.ambito.com/adjuntos/239/imagenes/029/702/0029702118.jpg">
+         </div>
+         <div class = "col-12 form-input">
+           <form>
+               <div class="form-group">
+                  <input type = "email" class = "form-control" name = "correo" placeholder="Ingrese un correo electrónico" [(ngModel)] = "con.email">
+               </div>
+               <div class="form-group">
+                  <i class="fas fa-lock"></i>
+                  <input [type] = "tipo" class = "form-control" name = "clave" placeholder="Ingrese una contraseña"  [(ngModel)] = "con.clave">
+                  <span class = "fas fa-eye" (mouseover) = "clave('text')" (mouseout) = "clave('password')"></span>
+              </div>
+              <div class="form-group">
+                <input type = "text" class = "form-control" name = "razonSocial" placeholder="Ingrese razón social" [(ngModel)] = "con.razonSocial">
+              </div>
+              <div class="form-group">
+                <input type = "text" class = "form-control" name = "localidad" placeholder="Ingrese localidad" [(ngModel)] = "con.localidad">
+              </div>
+              <div class="form-group">
+                <input type = "number" class = "form-control" name = "tel" placeholder="Ingrese telefono" [(ngModel)] = "con.tel">
+              </div>
+              <br>
+              <button type = "submit"  class="btn btn-danger" (click) = "registrar()" >Registrar</button>
+           </form>
+         </div>
+
+      </div>
+  </div>
+</div>

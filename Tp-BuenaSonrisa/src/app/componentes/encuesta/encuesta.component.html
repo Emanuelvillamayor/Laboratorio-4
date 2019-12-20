@@ -1,0 +1,25 @@
+<div class = "row" style="margin-top:2%">
+   <div class="col-3"></div>
+   <div class="col-sm" style = "background-color: white;">
+      <label for="">Elija el nivel de satisfacción con la Clinica La Sonrisa</label>
+      <br>
+      <div class = "slidecontainer">
+        <input type = "range" class="slider" min="1" max="10" [(ngModel)] = "valor">
+        <label for="">Grado de satisfacción : {{valor}}</label>
+      </div>
+      <label for="">Elija el nivel de satisfacción con el especialista que lo atendio:</label>
+      <br>
+      <div class = "slidecontainer">
+        <input type = "range" class="slider" min="1" max="10" [(ngModel)] = "valor2">
+        <label for="">Grado de satisfacción : {{valor2}}</label>
+      </div>
+      <label>Breve descripción de su experiencia en nuestra clinica</label>
+      <textarea class = "form-control" (keyup) = "verificarDesc()" [(ngModel)] = "texto"></textarea>
+      <br>
+      <button class="btn btn-success btn-lg btn-block" [disabled] = "botonDes" (click) = "enviarEncuesta()">Enviar encuesta</button>
+   </div>
+   
+   <div class="col-3">
+        
+   </div>
+</div>

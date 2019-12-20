@@ -1,0 +1,48 @@
+<form >
+    <div class="midle">
+      <div  >
+      <h1 style="font-size:50px; margin: auto; width: 99%">Agregar Auto</h1>
+      </div>
+      <div class="input">
+          <mat-form-field class="fill">
+            <input type="text" matInput placeholder="Patente" name="patente" [(ngModel)]="patente" required>
+          </mat-form-field>
+        </div>
+      <div class="input">
+          <mat-form-field class="fill">
+            <input type="text" matInput placeholder="Color" name="color" [(ngModel)]="color" required>
+          </mat-form-field>
+      </div>
+      <div class="input">
+        <mat-form-field class="fill">
+          <input type="text" matInput placeholder="Marca" name="marca" [(ngModel)]="marca" required>
+        </mat-form-field>
+      </div>
+      <div class="input">
+        <mat-form-field class="fill">
+          <mat-select  placeholder="Tipo" [(value)]="tipo">
+              <mat-option value="Auto">Auto</mat-option>
+              <mat-option value="Moto">Moto</mat-option>
+              <mat-option value="Camioneta">Camioneta</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input">
+        <mat-form-field class="fill">
+          <input type="number" min="0" max="999999999" matInput placeholder="Kilometros" name="pass"[(ngModel)]="kilometros" required>
+        </mat-form-field>
+      </div>
+      <div class="input">
+          <div class="example-button-row">
+              <button class="boton"mat-raised-button type="reset" style="width: 50%; background-color:#f57474;color:black" value="Reset" >Limpiar</button>
+              <button (click)="Cargar()" class="boton" mat-raised-button style="width: 50%; background-color:#70f6af;color:black">Cargar</button>
+          </div>
+      </div>
+      <div>
+        <h1>
+          {{agrego}}
+        </h1>
+      </div>
+    </div>
+  </form>
+  

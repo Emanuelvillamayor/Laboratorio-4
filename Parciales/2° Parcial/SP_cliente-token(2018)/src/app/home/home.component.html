@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-mat="space-around center"
+     fxLayoutGap="10px">
+
+<mat-card *ngIf="dish" fxFlex>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>Zapatos</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="../../assets/imagenes/zapatos.png" alt="Servidores">
+  <mat-card-content>
+    <p>El mejor calzado al mejor precio
+    </p>
+  </mat-card-content>
+</mat-card>
+  <div [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+
+<mat-card *ngIf="promotion" fxFlex>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>
+      <h3>Zapatillas</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="../../assets/imagenes/zapatillas.png" alt="Base de Datos">
+  <mat-card-content>
+    <p>Las principales marcas
+    </p>
+  </mat-card-content>
+</mat-card>
+  <div [hidden]="promotion">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+
+<mat-card *ngIf="leader" fxFlex>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>
+        <h3>Botas</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="../../assets/imagenes/botas.png" alt="archivos">
+    <mat-card-content>
+      <p>Las mejores botas
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <div [hidden]="leader">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+
+</div>
+  

@@ -1,0 +1,37 @@
+<app-datos-usuario (send_tipo)="Tipo($event)" (send_mail)="Mail($event)"></app-datos-usuario>
+
+<form >
+  <div class="midle">
+    <div  >
+    <h1 style="font-size:50px; margin: auto; width: 99%">Service</h1>
+    </div>
+    <div class="input">
+      <mat-form-field class="fill">
+        <input type="text" matInput placeholder="Patente" name="patente" [(ngModel)]="patente" required>
+      </mat-form-field>
+    </div>
+    <div class="input">
+        <mat-form-field class="fill">
+          <input type="time" matInput placeholder="Hora" name="hora" [(ngModel)]="horario" required>
+        </mat-form-field>
+    </div>
+    <div class="input">
+      <mat-form-field class="fill">
+        <input type="date" matInput placeholder="Dia" name="dia" [(ngModel)]="dia" required>
+      </mat-form-field>
+    </div>
+    <div class="input">
+        <div class="example-button-row">
+            <button class="boton"mat-raised-button type="reset" style="width: 50%; background-color:#f57474;color:black" value="Reset" >Limpiar</button>
+            <button (click)="Cargar()" class="boton" mat-raised-button style="width: 50%; background-color:#70f6af;color:black">Pedir Service</button>
+        </div>
+    </div>
+    <div>
+      <h1>
+        {{agrego}}
+      </h1>
+    </div>
+  </div>
+</form>
+
+

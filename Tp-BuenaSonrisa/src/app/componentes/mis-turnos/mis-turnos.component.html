@@ -1,0 +1,52 @@
+<table class="table" id = "miTabla">
+  <thead>
+     <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Especialista</th>
+        <th>Estado</th>
+     </tr>
+  </thead>
+  <tbody>
+     <tr *ngFor = "let item of misTurnos" [style] = "sanitizer.bypassSecurityTrustStyle(item.estado | estados)">
+        <td>{{item.fecha | fecha}}</td>
+        <td>{{item.horario}}</td>
+        <td>{{item.especialista.nombre}} {{item.especialista.apellido}}</td>
+        <td *ngIf = "item.estado == 'pendiente'">Pendiente</td>
+        <td *ngIf = "item.estado == 'ausente'">Ausente</td>
+        <td *ngIf = "item.estado == 'atendido'">
+         <div class="btn-group" role="group">
+          <button class="btn btn-success" (click) = "verResenia(item)" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Ver reseña</button>
+          <button class="btn btn-warning" *ngIf = "!item.encuesta" routerLink = "/home/encuesta/{{item.id}}">Realizar encuesta</button>
+         </div>
+        </td>
+     
+     </tr>
+     
+  </tbody>
+ 
+</table>
+<app-descarga *ngIf = "mostrarDescarga" idHtml = "miTabla" [dataTurnos] = "misTurnos"></app-descarga>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #72b0dc;">
+              <h5 class="modal-title" id="exampleModalLabel">Reseña sobre usted</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group" *ngIf = "mostrarModal">
+                  <label for="message-text" class="col-form-label">Reseña:</label>
+                  <textarea class="form-control" id="message-text" name = "resenia" [(ngModel)] = "resenia.texto" disabled></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>

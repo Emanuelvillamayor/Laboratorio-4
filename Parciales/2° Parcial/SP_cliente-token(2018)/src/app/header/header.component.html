@@ -1,0 +1,45 @@
+<mat-toolbar class="header">
+  <span><img src="/assets/images/logo.png" height=auto width=30px></span>
+
+  <!-- PAGINA DESLOGUEADA -->
+  <a mat-button *ngIf="!IngresoBool" routerLink="/home" routerLinkActive="active" id="hbtn"><span class="fa fa-home fa-lg"></span> Home</a>
+
+ <!-- PERFILES -->
+ <a mat-button  *ngIf="IngresoBool && (perfilUsuario != 'cliente')" routerLink="/servidores" routerLinkActive="active" id="hbtn"><span class="fa fa-info fa-lg"></span> Cargar Productos </a>
+ <a mat-button  *ngIf="IngresoBool && (perfilUsuario == 'administrador')" routerLink="/bases" routerLinkActive="active" id="hbtn"><span class="fa fa-bar-chart fa-lg"></span> Estadísticas</a>
+ <a mat-button  *ngIf="IngresoBool" routerLink="/almacarchivos" routerLinkActive="active" id="hbtn"><span class="fa fa-shopping-cart fa-lg"></span> Hacer compras</a>
+
+ <a mat-button  *ngIf="IngresoBool && (perfilUsuario == 'free')" routerLink="/free" routerLinkActive="active" id="hbtn"><span class="fa fa-user fa-lg"></span> NO PUEDE ACCEDER</a>
+
+ <span class="flex-spacer"></span>¡Hola {{nombre}}!
+
+  <!-- LOGUEO -->
+  <a mat-button  *ngIf="!IngresoBool" (click)="openLoginForm()" id="hbtn"><span class="fa fa-sign-in fa-lg"></span> Ingresar</a>
+  <a mat-button *ngIf="IngresoBool" (click)="logout()" id="hbtn"><span class="fa fa-sign-out fa-lg"></span> Salir</a>
+
+
+</mat-toolbar>
+
+<div class="container-fluid jumbotron"
+    fxLayout="row"
+    fxLayout.sm="column" 
+    fxLayout.xs="column" 
+    fxLayoutAlign.xs="start center"
+    fxLayoutAlign.sm="start center" 
+    fxLayoutAlign.gt-sm="center center" 
+    fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="60%">
+    <div>
+    <h1 style="color:whitesmoke; 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Zapateria POLLO</h1>
+  </div>
+    <p>La mejor zapateria de Zona Sur</p>
+  </div>
+  <div class="md-8">
+    
+      <mat-toolbar-row>
+          <img class="enmarcada" src="../../assets/images/theRedDoor.png" alt="Avatar">
+        </mat-toolbar-row>
+  </div>
+ 
+</div>

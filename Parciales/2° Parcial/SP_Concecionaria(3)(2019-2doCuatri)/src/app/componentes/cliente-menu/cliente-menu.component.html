@@ -1,0 +1,245 @@
+<div class="container">
+    <app-nombreytipo [nombre]="usuarioActual" [tipo]="razonSocial"></app-nombreytipo>
+    <div class="row">
+    <div class="col">
+        <div class="card carta mt-5">
+            <div class="card-body">
+              <h2 class="card-title text-center">Alta de autos</h2>
+              <form class="form-signin">
+                <div class="form-label-group">
+                    <input type="text" name="patente" class="form-control" placeholder="Marca" [(ngModel)]="auto.marca">
+                  <br>
+                </div> 
+                <div class="form-label-group">
+                    <input type="text" name="marca" class="form-control" placeholder="Modelo" [(ngModel)]="auto.modelo">
+                  <br>
+                </div>
+                <div class="form-label-group">
+                    <input type="number" name="color" class="form-control" placeholder="A&ntilde;o" [(ngModel)]="auto.anio">
+                  <br>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" name="kilimetros" class="form-control" placeholder="Kilimetros" [(ngModel)]="auto.kilometros">
+                  <br>
+                </div>
+                <div class="form-label-group">
+                    <label for="tipo">Tipo:</label>
+                    <select name="Tipo" class="custom-select" [(ngModel)]="auto.tipo">
+                            <option value="auto" selected>Auto</option> 
+                            <option value="moto">Moto</option> 
+                            <option value="camioneta">Camioneta</option>
+                    </select>
+                    <br>
+                </div>
+                <!-- <div class="form-label-group">
+                    <br>
+                    <input type="text" name="correo" class="form-control" placeholder="Usuario" [(ngModel)]="usuarioActual">
+                  <br>
+                </div> -->
+                <br>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)=" AltaAutoCliente()">Ingresar</button>
+                <hr class="my-4">
+              </form>
+            </div>
+          </div>
+    </div>
+    <div class="col" id='tabla'>
+        <table class="table" style="margin-top: 10%"> 
+            <!-- <thead> -->
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">modelo</th>
+                <th scope="col">marca</th>
+                <th scope="col">color</th>
+                <th scope="col">kilometros</th>
+                <th scope="col">tipo</th>
+                <!-- <th scope="col">Usuario</th> -->
+              </tr>
+            <!-- </thead> -->
+            <!-- <tbody> -->
+              <tr *ngFor="let a of autos" >
+                <!-- <th scope="row">•</th> -->
+                <td>{{a.modelo}}</td>
+                <td>{{a.marca}}</td>
+                <td>{{a.anio}}</td>
+                <td>{{a.kilometros}}</td>
+                <td>{{a.tipo}}</td>
+                <!-- <td>{{a.usuario}}</td> -->
+              </tr>
+            <!-- </tbody> -->
+          </table>
+          <app-pdfgenerator [tabla]=getDatosTabla()></app-pdfgenerator>
+          <button (click)="exportTableToCSV('Autos.csv')">Descargar csv</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12" id='tabla'>
+      <h2>Lista de todos los autos</h2>
+      <h5>Filtrar por</h5>
+      <button class="btn btn-lg btn-primary" (click)="cambiarFiltro('v')">Tipo de vehiculo</button>
+      <button class="btn btn-lg btn-primary" (click)="cambiarFiltro('l')">Localidad</button>
+      <button class="btn btn-lg btn-primary" (click)="cambiarFiltro('c')">concesionaria</button>
+
+      <div class="form-label-group" *ngIf="filtro == 'v'">
+          <label for="tipo">Tipo de vehiculos:</label>
+          <select name="Tipo" class="custom-select" (change)="filtrarPorParametroTipo($event)">
+              <option *ngFor="let at of listaDeTipos" value={{at}}>{{at}}</option> 
+          </select>
+          <br>
+          <table class="table" style="margin-top: 10%"> 
+              <!-- <thead> -->
+                <tr>
+                      <!-- <th scope="col">#</th> -->
+                      <th scope="col">modelo</th>
+                      <th scope="col">marca</th>
+                      <th scope="col">color</th>
+                      <th scope="col">kilometros</th>
+                      <th scope="col">tipo</th>
+                      <th scope="col">localidad</th>
+                      <th scope="col">concesionaria</th>
+                      <!-- <th scope="col">Usuario</th> -->
+                    </tr>
+                  <!-- </thead> -->
+                  <!-- <tbody> -->
+                    <tr *ngFor="let at of autosTipo" >
+                      <!-- <th scope="row">•</th> -->
+                      <td>{{at.modelo}}</td>
+                      <td>{{at.marca}}</td>
+                      <td>{{at.anio}}</td>
+                      <td>{{at.kilometros}}</td>
+                      <td>{{at.tipo}}</td>
+                      <td>{{at.localidad}}</td>
+                      <td>{{at.usuario}}</td>
+                      <!-- <td>{{a.usuario}}</td> -->
+                    </tr>
+                  <!-- </tbody> -->
+          </table>
+      </div>
+
+      <div class="form-label-group"  *ngIf="filtro == 'l'" >
+          <label for="tipo">Localidad:</label>
+          <select name="Tipo" class="custom-select" (change)="filtrarPorParametroLocalidad($event)">
+              <option *ngFor="let at of listaDeLocalidades" value={{at}}>{{at}}</option>
+          </select>
+          <br>
+          <table class="table" style="margin-top: 10%"> 
+              <!-- <thead> -->
+                <tr>
+                      <!-- <th scope="col">#</th> -->
+                      <th scope="col">modelo</th>
+                      <th scope="col">marca</th>
+                      <th scope="col">color</th>
+                      <th scope="col">kilometros</th>
+                      <th scope="col">tipo</th>
+                      <th scope="col">localidad</th>
+                      <th scope="col">concesionaria</th>
+                      <!-- <th scope="col">Usuario</th> -->
+                    </tr>
+                  <!-- </thead> -->
+                  <!-- <tbody> -->
+                    <tr *ngFor="let at of autosLocalidad" >
+                      <!-- <th scope="row">•</th> -->
+                      <td>{{at.modelo}}</td>
+                      <td>{{at.marca}}</td>
+                      <td>{{at.anio}}</td>
+                      <td>{{at.kilometros}}</td>
+                      <td>{{at.tipo}}</td>
+                      <td>{{at.localidad}}</td>
+                      <td>{{at.usuario}}</td>
+                      <!-- <td>{{a.usuario}}</td> -->
+                    </tr>
+                  <!-- </tbody> -->
+          </table>
+      </div>
+
+      <div class="form-label-group"  *ngIf="filtro == 'c'">
+          <label for="tipo">concesionaria:</label>
+          <select name="Tipo" class="custom-select" (change)="filtrarPorParametroConcesio($event)">
+              <option *ngFor="let at of listaDeConcesionarias" value={{at}}>{{at}}</option>            
+          </select>
+          <br>
+          <table class="table" style="margin-top: 10%"> 
+              <!-- <thead> -->
+                <tr>
+                      <!-- <th scope="col">#</th> -->
+                      <th scope="col">modelo</th>
+                      <th scope="col">marca</th>
+                      <th scope="col">color</th>
+                      <th scope="col">kilometros</th>
+                      <th scope="col">tipo</th>
+                      <th scope="col">localidad</th>
+                      <th scope="col">concesionaria</th>
+                      <!-- <th scope="col">Usuario</th> -->
+                    </tr>
+                  <!-- </thead> -->
+                  <!-- <tbody> -->
+                    <tr *ngFor="let at of autosConcesio" >
+                      <!-- <th scope="row">•</th> -->
+                      <td>{{at.modelo}}</td>
+                      <td>{{at.marca}}</td>
+                      <td>{{at.anio}}</td>
+                      <td>{{at.kilometros}}</td>
+                      <td>{{at.tipo}}</td>
+                      <td>{{at.localidad}}</td>
+                      <td>{{at.usuario}}</td>
+                      <!-- <td>{{a.usuario}}</td> -->
+                    </tr>
+                  <!-- </tbody> -->
+          </table>
+      </div>
+      
+      <table class="table" style="margin-top: 10%" *ngIf="filtro == 'n'"> 
+          <!-- <thead> -->
+            <tr>
+                  <!-- <th scope="col">#</th> -->
+                  <th scope="col">modelo</th>
+                  <th scope="col">marca</th>
+                  <th scope="col">color</th>
+                  <th scope="col">kilometros</th>
+                  <th scope="col">tipo</th>
+                  <th scope="col">localidad</th>
+                  <th scope="col">concesionaria</th>
+                  <!-- <th scope="col">Usuario</th> -->
+                </tr>
+              <!-- </thead> -->
+              <!-- <tbody> -->
+                <tr *ngFor="let at of autosTodos" >
+                  <!-- <th scope="row">•</th> -->
+                  <td>{{at.modelo}}</td>
+                  <td>{{at.marca}}</td>
+                  <td>{{at.anio}}</td>
+                  <td>{{at.kilometros}}</td>
+                  <td>{{at.tipo}}</td>
+                  <td>{{at.localidad}}</td>
+                  <td>{{at.usuario}}</td>
+                  <!-- <td>{{a.usuario}}</td> -->
+                </tr>
+              <!-- </tbody> -->
+      </table>
+            <!-- <app-pdfgenerator [tabla]=getDatosTabla()></app-pdfgenerator> -->
+            <!-- <button (click)="exportTableToCSV('Autos.csv')">Descargar csv</button> -->
+      </div>
+  </div>
+    <div *ngIf="error">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
+            <div class="card carta mt-5 " style="background: rgb(255, 73, 73); color: rgb(255, 255, 255);">
+                <label class="card-title text-center mt-3">{{mensajeError}}</label>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargando">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
+            <div class="card carta mt-5 " style="background: rgb(48, 114, 255); color: rgb(255, 255, 255);">
+                <label class="card-title text-center mt-3">{{mensajeError}}</label>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="mensaje">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
+            <div class="card carta mt-5 " style="background: rgb(49, 255, 100); color: rgb(255, 255, 255); text-align: center;">
+                <label class="card-title text-center mt-3">{{mensajeError}}</label>
+            </div>
+        </div>
+    </div>
+  </div>
+  

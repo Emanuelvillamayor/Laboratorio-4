@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+          <a href="/cargar"  style="text-decoration: none">
+              <span>Alta Auto</span>
+          </a>
+      </button>
+      <button mat-menu-item>
+          <a href="/verTurno"  style="text-decoration: none">
+              <span>Ver Turnos</span>
+            </a>
+      </button>
+      <button mat-menu-item>
+        <a href="/sacarTurno"  style="text-decoration: none">
+            <span>Sacar Turno</span>
+          </a>
+      </button>
+      <button  href="/cli" mat-menu-item>
+          <a  href="/cli" style="text-decoration: none">
+              <span>Cliente</span>
+            </a>
+        </button>
+        <button href="/admin" mat-menu-item>
+            <a href="/admin" style="text-decoration: none">
+                <span>Admin</span>
+              </a>
+          </button>
+    </mat-menu>
+    
+    <span class="example-spacer"></span>
+    <app-nombre></app-nombre>
+    <span class="example-spacer"></span>
+    <a href="/salir" mat-icon-button>
+    <mat-icon class="example-icon">exit_to_app</mat-icon>
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>

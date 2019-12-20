@@ -1,0 +1,10 @@
+<div class="card-deck justify-content-center align-content-center">
+  <div class="card" appPanel>
+    <img class="card-img-top" [src]="domSanitizer.bypassSecurityTrustUrl(zapato.imagen)"
+      alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{zapato.codigo}} - {{zapato.nombre}}</h5>
+      <p class="card-text">${{zapato.precio}}</p>
+    </div>
+  </div>
+</div>

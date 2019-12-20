@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-sm">
+        <label for="">Descargar PDF---></label>
+      
+        <button (click) = "descargar()">download</button>
+    </div>
+    <div class="col-sm">
+            <label>Descargar CSV---></label>
+            
+            <angular2csv [data]="data" filename="tabla.csv" [options]="options" label_btn = "Descargar"></angular2csv>
+         </div>
+</div>

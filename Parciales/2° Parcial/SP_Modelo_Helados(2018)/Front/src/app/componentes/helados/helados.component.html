@@ -1,0 +1,19 @@
+<div class="button-row">
+
+<button mat-stroked-button  (click)="AltaHelado()">Dar de alta helado</button>
+
+<button  mat-stroked-button  (click)="MostrarUnHelado(htmlIdHelado)">Traer 1 helado</button>
+
+<input matInput [(ngModel)]="htmlIdHelado" placeholder="Ingrese id de helado" name="idHelado" type="text"  />
+</div>
+
+  <div *ngIf="unHelado" >
+  Sabor de un solo helado: {{unHelado.Sabor}}
+  ID: {{unHelado.id_helado}}
+   - SABOR: {{unHelado.Sabor}}
+  <img src="assets/imagenes/{{unHelado.id_helado}}.JPG" >
+
+
+  </div>
+
+

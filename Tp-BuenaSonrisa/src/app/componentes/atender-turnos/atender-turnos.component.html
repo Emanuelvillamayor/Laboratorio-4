@@ -1,0 +1,48 @@
+   
+    <table class="table" *ngIf = "mostrarTabla; else miDiv" style = "margin-top:2%">
+        <thead style="background-color: #72b0dc;">
+            <th>Fecha</th>
+            <th>Horario</th>
+            <th>Paciente</th>
+            <th>Accion</th>
+        </thead>
+        <tbody style="background-color:aquamarine;">
+            <tr>
+                <td>{{primerTurno.fecha | fecha}}</td>
+                <td>{{primerTurno.horario}}</td>
+                <td>{{primerTurno.paciente.nombre}}  {{primerTurno.paciente.apellido}}</td>
+                <td>
+                    <button class = "btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Atender</button>
+                    <br><br>
+                    <button class = "btn btn-danger" (click) = "ausente(primerTurno)">Ausente</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #miDiv >
+        <h1 style="text-align: center;margin-top:7%">En este momento no hay turnos pendientes.....</h1>
+    </ng-template>
+    <div *ngIf = "mostrarTabla" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color: #72b0dc;" >
+                  <h5 class="modal-title" id="exampleModalLabel">Reseña sobre el paciente {{primerTurno.paciente.nombre}} {{primerTurno.paciente.apellido}} </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Escriba la reseña:</label>
+                      <textarea class="form-control" id="message-text" name = "resenia" [(ngModel)] = "texto" (keyup) = "verificarResenia()"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" (click) = "enviarResenia()" data-dismiss = "modal" [disabled] = "botonResenia">Enviar reseña</button>
+                </div>
+              </div>
+            </div>
+          </div>

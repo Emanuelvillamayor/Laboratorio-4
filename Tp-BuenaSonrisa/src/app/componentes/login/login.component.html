@@ -1,0 +1,39 @@
+<div class = "modal-dialog text center">
+    <div class = "col-sm-9 main-section">
+        <div class="modal-content">
+           <div class="col-sm-12 user-img">
+              <img [src] = "entidad.foto" class="img-redonda">
+           </div>
+           <div class = "col-12 form-input">
+             <form>
+                 <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type = "email" class = "form-control" name = "correo" placeholder="Ingrese un correo electrónico" [(ngModel)] = "entidad.correo">
+                 </div>
+                 <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input [type] = "tipo" class = "form-control" name = "clave" placeholder="Ingrese una contraseña"  [(ngModel)] = "entidad.clave">
+                    <span class = "fas fa-eye" (mouseover) = "clave('text')" (mouseout) = "clave('password')"></span>
+                </div>
+                <div *ngIf = "!mostrarBoton">
+                   <img src = "../../../assets/loading.gif" width="70" height="70" class="centrarSpinner">
+                </div>
+                <button *ngIf = "!mostrarMsj && mostrarBoton" type = "submit" [disabled] = "disabled" class="btn" (click) = "iniciarSesion()" >Iniciar sesión</button>
+                <label *ngIf = "mostrarMsj" class="alert alert-warning" role="alert">{{msj}}</label> 
+           </form>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+          <img src="../../../assets/buenasonrisa.png" width="160" height="100">
+          <label style="margin-top:45%;font-family: cursive;color: white;position:absolute;left: 10%;">por Nahuel Vallejos</label>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    
+</div>
+</div>
+
+
