@@ -1,4 +1,4 @@
-
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { UsuarioModel } from './../models/usuario.model';
 import { Injectable } from '@angular/core';
@@ -11,12 +11,11 @@ import { AngularFireAuth} from '@angular/fire/auth';
 // header para pasarle a auto
 import { HttpHeaders } from '@angular/common/http';
 import { AutoModel } from '../models/auto.model';
-import { map } from 'rxjs/operators';
+
 
 //bd firestore
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage'; // libreria para la nube de firebase
 import { Observable } from 'rxjs';
 import { ImgInterface } from '../models/imagen';
 @Injectable({
@@ -53,21 +52,20 @@ export class UserService {
     this.user.pass = pass;
   }
 
-  public setAuto(marca, tipo, modelo, color, path) {
+  public setAuto(marca, tipo, modelo, color) {
 
     this.auto.marca = marca;
     this.auto.tipo = tipo;
     this.auto.color = color;
     this.auto.modelo = modelo;
-    this.auto.pathImagen = path;
 
   }
 
   // retorna el "token" si es correcto o sino retorna error "credenciales invalidas"
   login() {
     const  cliente = {cliente: {user: this.user.email, pass: this.user.pass}};
-    return this.http.post('http://192.168.0.28:3003/login', this.user.getJson());
-   // return this.http.post('http://127.0.0.1:3003/login', this.user.getJson());
+   // return this.http.post('http://192.168.0.28:3003/login', this.user.getJson());
+   return this.http.post('http://127.0.0.1:3003/login', this.user.getJson());
   }
 
   postClientes() {
@@ -108,7 +106,7 @@ export class UserService {
       })};
 
 
-     // const  auto = {auto: {color: this.user.email, año: this.user.pass}};
+      const  auto = {auto: {color: this.user.email, año: this.user.pass}};
     //  return this.http.post('http://192.168.0.28:3003/login', auto , httpOptions);
     return this.http.post('http://192.168.0.28:3003/auto', this.auto.getJsonAuto() , httpOptions);
 
@@ -126,34 +124,20 @@ export class UserService {
       })};
 
 
-     // const  cliente = {cliente: {user: this.user.email, pass: this.user.pass}};
+      const  cliente = {cliente: {user: this.user.email, pass: this.user.pass}};
       return this.http.get('http://192.168.0.28:3003/auto',httpOptions);
   }
 
-  // subo un archivo a la nube
-  subirArchivo(archivo: any, path: string) {
-   // let nombre = (archivo.name).split('.',1); // nombre del archivo
-
-    
-    return this.afStorage.upload(path, archivo);
-  }
-
-  traerArchivo( path: string) {
-    return this.afStorage.ref(path).getDownloadURL();
-  }
-
-  public crearArregloAutos(autosObj: object) {
-    const autos : AutoModel [] = [];
-
-    Object.keys(autosObj).forEach( key => {
-      const auto: AutoModel = autosObj[key];
-
-      autos.push(auto);
-    });
-
-  return autos;
+  subirArchivo(archivo:any) {
+    return this.afStorage.upload('ola', archivo);
   }
 
 
+  // captcha , si el string no esta vacio es porque es correcto
+  captcha(captchaResponse: string) {
+    if (captchaResponse !== '')  {
+      console.log(`Resolved captcha with response: ${captchaResponse}`);
+    }
+  }
 
 }

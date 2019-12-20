@@ -1,0 +1,17 @@
+Cargar auto: <br> Marca:<input type="text" id="marca" name="marca" [(ngModel)]="marca"><br> Tipo: <input type="text" id="tipo" name="tipo" [(ngModel)]="tipo"><br> Modelo: <input type="number" id="modelo" name="modelo" [(ngModel)]="modelo"><br> Color:
+<input type="text" id="color" name="color" [(ngModel)]="color"><br>
+
+<br><br>
+
+<input type="file" (change)="subirArchivo($event)" value="archivo">
+<mi-captcha (cargar)="ngProcesarCarga($event)"></mi-captcha><br><br>
+
+<!-- En el [cadenaQR] (con los corchetes) va a ser nuestro "@Input" desde "qr.ts" (claseHija) al cual le vamos a enviar datos
+    desde la clase padre , y el cadenaQR (sin corchetes) donde vamos a guardar lo que queremos enviar a datos desde nuestro "home.ts" 
+    en este caso seria un string con los datos del "auto" -->
+<div *ngIf='checkEmptyInputs() == false'><!--muestro el qr una vez que el usuario cargue todos los datos-->
+  <mi-qr [cadenaQR]='cadenaQR'></mi-qr>
+</div>
+
+<br>
+<button (click)="cargarAuto()" [disabled]="checkEmptyInputs()">Enviar</button><br>
